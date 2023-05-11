@@ -3,6 +3,27 @@
 #include <time.h>
 #include "funcoes.h"
 
+// Funcao para gerar um registro de log
+LogRecord* generateLogRecord(){
+    // Aloca um registros de log
+    LogRecord *logRecordUnit = malloc(sizeof(LogRecord));
+    if (logRecordUnit == NULL){
+        perror("Erro ao alocar memoria");
+        exit(EXIT_FAILURE);
+    }
+    // Gera uma data aleatoria no intervalo de 2010 a 2022
+    logRecordUnit->year = rand() % 13 + 2010;
+    logRecordUnit->month = rand() % 12 + 1;
+    logRecordUnit->day = rand() % 31 + 1;
+    // Gera um horario aleatorio no intervalo de 00:00:00 a 23:59:59
+    logRecordUnit->hour = rand() % 24;
+    logRecordUnit->minute = rand() % 60;
+    logRecordUnit->second = rand() % 60;
+    // Gera um id de processo aleatorio
+    logRecordUnit->process_id = rand() % 100;
+    return logRecordUnit;
+}
+
 int main(int argc, char *argv[]){
    if (argc < 4){
         return 1;
@@ -97,14 +118,14 @@ int main(int argc, char *argv[]){
     cpu_time = ((double) (end - start)) / CLOCKS_PER_SEC;
 
     // imprimindo registros de log ordenados ate 20
-    printf("Registros de log ordenados:\n");
-    for(i = 0; i < n; i++){
-        printf("%d/%d/%d %d:%d:%d - Processo %d\n", logArray[i]->day, logArray[i]->month, logArray[i]->year, 
-        logArray[i]->hour, logArray[i]->minute, logArray[i]->second, logArray[i]->process_id);
-        if(i > 20){
-           break;
-        }
-    }
+    //printf("Registros de log ordenados:\n");
+    //for(i = 0; i < n; i++){
+    //    printf("%d/%d/%d %d:%d:%d - Processo %d\n", logArray[i]->day, logArray[i]->month, logArray[i]->year, 
+    //    logArray[i]->hour, logArray[i]->minute, logArray[i]->second, logArray[i]->process_id);
+    //    if(i > 20){
+    //       break;
+    //    }
+    //}
 
     printf("Tempo de execucao: %lf segundos\n", cpu_time);
     printf("Numero de comparacoes: %lu\n", numComparacoes);
