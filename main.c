@@ -39,14 +39,11 @@ void userinput(int *escolha, int *n, int *ordem){
     scanf("%d", escolha);
     printf("Digite o numero de registros de log:\n");
     scanf("%d", n);
-    printf("Digite a ordem de ordenacao:\n");
+    printf("Digite a ordem dos registros:\n");
     printf("0 - Decrescente\n");
     printf("1 - Crescente\n");
     printf("2 - Aleatoria\n");
     scanf("%d", ordem);
-    if(*ordem == 2){
-        *ordem = rand() % 2; // gera um numero aleatorio entre 0 e 1
-    }
 }
 int main(){
     int escolha; // escolha um algoritmo
@@ -64,6 +61,13 @@ int main(){
     for(int i = 0; i < n; i++){
         logArray[i] = generateLogRecord(); // gera um registro de log aleatorio
     }
+
+    if(ordem < 2){
+        heapSort(logArray, n, &numComparacoes, &numTrocas, ordem); // organiza o registro
+        numComparacoes = 0;
+        numTrocas = 0;
+    }
+    ordem = 1; // crescente
 
     switch (escolha){
     case 1:
