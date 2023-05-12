@@ -63,7 +63,7 @@ int main(){
     }
 
     if(ordem < 2){
-        heapSort(logArray, n, &numComparacoes, &numTrocas, ordem); // organiza o registro
+        quickSort(logArray, 0, n-1, &numComparacoes, &numTrocas, ordem); // organiza o registro
         numComparacoes = 0;
         numTrocas = 0;
     }
@@ -73,37 +73,37 @@ int main(){
     case 1:
         printf("Bubble Sort\n");
         start = clock();
-        bubbleSort(logArray, n, &numComparacoes, &numTrocas, ordem);
+        bubbleSort(logArray, n, &numComparacoes, &numTrocas);
         end = clock();
         break;
     case 2:
         printf("Insertion Sort\n");
         start = clock();
-        insertionSort(logArray, n, &numComparacoes, &numTrocas, ordem);
+        insertionSort(logArray, n, &numComparacoes, &numTrocas);
         end = clock();
         break;
     case 3:
         printf("Selection Sort\n");
         start = clock();
-        selectionSort(logArray, n, &numComparacoes, &numTrocas, ordem);
+        selectionSort(logArray, n, &numComparacoes, &numTrocas);
         end = clock();
         break;
     case 4:
         printf("Shell Sort\n");
         start = clock();
-        shellSort(logArray, n, &numComparacoes, &numTrocas, ordem);
+        shellSort(logArray, n, &numComparacoes, &numTrocas);
         end = clock();
         break;
     case 5:
         printf("Merge Sort\n");
         start = clock();
-        mergeSort(logArray, n, &numComparacoes, &numTrocas, ordem);
+        mergeSort(logArray, n, &numComparacoes, &numTrocas);
         end = clock();
         break;
     case 6:
         printf("Heap Sort\n");
         start = clock();
-        heapSort(logArray, n, &numComparacoes, &numTrocas, ordem);
+        heapSort(logArray, n, &numComparacoes, &numTrocas);
         end = clock();
         break;
     case 7:
@@ -115,19 +115,19 @@ int main(){
     case 8:
         printf("Comb Sort\n");
         start = clock();
-        combSort(logArray, n, &numComparacoes, &numTrocas, ordem);
+        combSort(logArray, n, &numComparacoes, &numTrocas);
         end = clock();
         break;
     case 9:
         printf("Cocktail Shaker Sort\n");
         start = clock();
-        cocktailShakerSort(logArray, n, &numComparacoes, &numTrocas, ordem);
+        cocktailShakerSort(logArray, n, &numComparacoes, &numTrocas);
         end = clock();
         break;
     case 10:
         printf("Bingo Sort\n");
         start = clock();
-        bingoSort(logArray, n, &numComparacoes, &numTrocas, ordem);
+        bingoSort(logArray, n, &numComparacoes, &numTrocas);
         end = clock();
         break;
     default:
@@ -138,14 +138,14 @@ int main(){
     cpu_time = ((double) (end - start)) / CLOCKS_PER_SEC;
 
     // imprimindo registros de log ordenados ate 20
-    //printf("Registros de log ordenados:\n");
-    //for(i = 0; i < n; i++){
-    //    printf("%d/%d/%d %d:%d:%d - Processo %d\n", logArray[i]->day, logArray[i]->month, logArray[i]->year, 
-    //    logArray[i]->hour, logArray[i]->minute, logArray[i]->second, logArray[i]->process_id);
-    //    if(i > 20){
-    //       break;
-    //    }
-    //}
+    printf("Registros de log ordenados:\n");
+    for(int i = 0; i < n; i++){
+        printf("%d/%d/%d %d:%d:%d - Processo %d\n", logArray[i]->day, logArray[i]->month, logArray[i]->year, 
+        logArray[i]->hour, logArray[i]->minute, logArray[i]->second, logArray[i]->process_id);
+        if(i > 20){
+           break;
+        }
+    }
     printf("Tempo de execucao: %lf segundos\n", cpu_time);
     printf("Numero de comparacoes: %lu\n", numComparacoes);
     printf("Numero de trocas: %lu\n", numTrocas);
