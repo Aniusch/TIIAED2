@@ -24,28 +24,44 @@ LogRecord* generateLogRecord(){
     return logRecordUnit;
 }
 
-int main(int argc, char *argv[]){
-   if (argc < 4){
-        return 1;
+void userinput(int *escolha, int *n, int *ordem){
+    printf("Escolha um algoritmo de ordenacao:\n");
+    printf("1 - Bubble Sort\n");
+    printf("2 - Insertion Sort\n");
+    printf("3 - Selection Sort\n");
+    printf("4 - Shell Sort\n");
+    printf("5 - Merge Sort\n");
+    printf("6 - Heap Sort\n");
+    printf("7 - Quick Sort\n");
+    printf("8 - Comb Sort\n");
+    printf("9 - Cocktail Shaker Sort\n");
+    printf("10 - Bingo Sort\n");
+    scanf("%d", escolha);
+    printf("Digite o numero de registros de log:\n");
+    scanf("%d", n);
+    printf("Digite a ordem de ordenacao:\n");
+    printf("0 - Decrescente\n");
+    printf("1 - Crescente\n");
+    printf("2 - Aleatoria\n");
+    scanf("%d", ordem);
+    if(*ordem == 2){
+        *ordem = rand() % 2; // gera um numero aleatorio entre 0 e 1
     }
-    int escolha = atoi(argv[1]); // escolha um algoritmo
-    int n = atoi(argv[2]); // numero de registros de log
-    int ordem = atoi(argv[3]); // 0 para ordem decrescente e 1 para ordem crescente
-
+}
+int main(){
+    int escolha; // escolha um algoritmo
+    int n; // numero de registros de log
+    int ordem; // 0 para ordem decrescente e 1 para ordem crescente
     clock_t start, end; // medir tempo de execucao
     double cpu_time; // tempo de execucao
-
     long int numComparacoes = 0; // numero de comparacoes
     long int numTrocas = 0; // numero de trocas
 
-    if(ordem == 2){
-        ordem = rand() % 2; // gera um numero aleatorio entre 0 e 1
-    }
+    userinput(&escolha, &n, &ordem);
 
     LogRecord* logArray[n];
     // gerando registros de log aleatorios
-    int i;
-    for(i = 0; i < n; i++){
+    for(int i = 0; i < n; i++){
         logArray[i] = generateLogRecord(); // gera um registro de log aleatorio
     }
 
@@ -126,16 +142,13 @@ int main(int argc, char *argv[]){
     //       break;
     //    }
     //}
-
     printf("Tempo de execucao: %lf segundos\n", cpu_time);
     printf("Numero de comparacoes: %lu\n", numComparacoes);
     printf("Numero de trocas: %lu\n", numTrocas);
-    
 
     // liberando memoria alocada para os registros de log
-    for(i = 0; i < n; i++){
+    for(int i = 0; i < n; i++){
         free(logArray[i]);
     }
-
     return 0;
 }
