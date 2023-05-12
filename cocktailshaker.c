@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void cocktailShakerSort(LogRecord* logArray[], int n, unsigned long *numComparacoes, unsigned long *numTrocas, int ascending){
+void cocktailShakerSort(LogRecord* logArray[], int n, unsigned long *numComparacoes, unsigned long *numTrocas){
     int comeco = 0, fim = n - 1;
     int troca = 1;
     LogRecord* temp;
@@ -23,7 +23,7 @@ void cocktailShakerSort(LogRecord* logArray[], int n, unsigned long *numComparac
                 (logArray[i]->minute > logArray[i+1]->minute) ||
                 (logArray[i]->minute == logArray[i+1]->minute) && 
                 (logArray[i]->second > logArray[i+1]->second);
-            if((ascending && cond) || (!ascending && !cond)){
+            if((cond)){
                 temp = logArray[i];
                 logArray[i] = logArray[i+1];
                 logArray[i+1] = temp;
@@ -51,7 +51,7 @@ void cocktailShakerSort(LogRecord* logArray[], int n, unsigned long *numComparac
                 (logArray[i]->minute > logArray[i+1]->minute) ||
                 (logArray[i]->minute == logArray[i+1]->minute) && 
                 (logArray[i]->second > logArray[i+1]->second);
-            if((ascending && cond) || (!ascending && !cond)){
+            if(cond){
                 temp = logArray[i];
                 logArray[i] = logArray[i+1];
                 logArray[i+1] = temp;

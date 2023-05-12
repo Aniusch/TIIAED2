@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void quickSort(LogRecord* logArray[], int left, int right, unsigned long *numComparacoes, unsigned long *numTrocas, int ascending) {
+void quickSort(LogRecord* logArray[], int left, int right, unsigned long *numComparacoes, unsigned long *numTrocas, int ascending){
     int i, j;
     LogRecord* pivot; // pivo
     i = left;

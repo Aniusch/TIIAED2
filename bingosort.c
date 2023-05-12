@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void bingoSort(LogRecord* logArray[], int n, unsigned long *numComparacoes, unsigned long *numTrocas, int ascending){
+void bingoSort(LogRecord* logArray[], int n, unsigned long *numComparacoes, unsigned long *numTrocas){
     int sorted = 0; // variavel que indica se o array esta ordenado
     LogRecord* temp;
     while(!sorted){ 
@@ -36,7 +36,7 @@ void bingoSort(LogRecord* logArray[], int n, unsigned long *numComparacoes, unsi
                 logArray[i]->hour == logArray[i+1]->hour &&
                 logArray[i]->minute == logArray[i+1]->minute &&
                 logArray[i]->second > logArray[i+1]->second);
-            if((ascending && should_swap) || (!ascending && !should_swap)){  // se o array nao esta ordenado
+            if(should_swap){  // se o array nao esta ordenado
                 temp = logArray[i];
                 logArray[i] = logArray[i+1];
                 logArray[i+1] = temp;
