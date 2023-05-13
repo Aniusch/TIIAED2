@@ -23,7 +23,16 @@ LogRecord* generateLogRecord(){
     logRecordUnit->process_id = rand() % 100;
     return logRecordUnit;
 }
-
+void printRegistros(LogRecord* logArray[], int n){
+    int i;
+    // imprimindo registros de log ordenados
+    printf("Registros de log ordenados:\n");
+    while(i < 100 && i < n){
+        printf("%d/%d/%d %d:%d:%d - Processo %d\n", logArray[i]->day, logArray[i]->month, logArray[i]->year, 
+        logArray[i]->hour, logArray[i]->minute, logArray[i]->second, logArray[i]->process_id);
+        i++;
+   }
+}
 void userinput(int *escolha, int *n, int *ordem){
     printf("Escolha um algoritmo de ordenacao:\n");
     printf("1 - Bubble Sort\n");
@@ -137,15 +146,7 @@ int main(){
     }
     cpu_time = ((double) (end - start)) / CLOCKS_PER_SEC;
 
-    // imprimindo registros de log ordenados ate 20
-//    printf("Registros de log ordenados:\n");
-//    for(int i = 0; i < n; i++){
-//        printf("%d/%d/%d %d:%d:%d - Processo %d\n", logArray[i]->day, logArray[i]->month, logArray[i]->year, 
-//        logArray[i]->hour, logArray[i]->minute, logArray[i]->second, logArray[i]->process_id);
-//        if(i > 20){
-//           break;
-//        }
-//   }
+    //printRegistros(logArray, n);
     printf("Tempo de execucao: %lf segundos\n", cpu_time);
     printf("Numero de comparacoes: %lu\n", numComparacoes);
     printf("Numero de trocas: %lu\n", numTrocas);
