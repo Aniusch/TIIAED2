@@ -3,65 +3,94 @@
 #include <stdio.h>
 
 void mergeSort(LogRecord* logArray[], long int n, unsigned long *numComparacoes, unsigned long *numTrocas){
-    if (n > 1) {
-        int mid = n / 2;
-        LogRecord* left[mid];
-        LogRecord* right[n - mid];
-        int i, j, k; 
-        for (i = 0; i < mid; i++) {
-            left[i] = logArray[i];
+    if (n <= 1) {
+        return;
+    }
+
+    LogRecord** aux = (LogRecord**)malloc(n * sizeof(LogRecord*));
+    if (aux == NULL) {
+        // se falhar em alocar memoria, quita o programa
+        return;
+    }
+
+    int width;
+    for (width = 1; width < n; width *= 2) {
+        int i;
+        for (i = 0; i < n; i += 2 * width) {
+            int left = i;
+            int mid = i + width;
+            int right = i + 2 * width;
+
+            if (mid > n) {
+                mid = n;
+            }
+            if (right > n) {
+                right = n;
+            }
+
+            merge(logArray, aux, left, mid, right, numComparacoes, numTrocas);
         }
-        for (j = 0; j < n - mid; j++) {
-            right[j] = logArray[mid + j];
+
+        // copia o array auxiliar para o array original
+        for (i = 0; i < n; i++) {
+            logArray[i] = aux[i];
         }
-        mergeSort(left, mid, numComparacoes, numTrocas); // ordena a primeira metade
-        mergeSort(right, n - mid, numComparacoes, numTrocas); // ordena a segunda metade
-        i = 0; 
-        j = 0;
-        k = 0;
-        while (i < mid && j < n - mid) { 
-            ++(*numComparacoes);
-            if ((left[i]->process_id < right[j]->process_id ||
-                (left[i]->process_id == right[j]->process_id && (
-                    left[i]->year < right[j]->year ||
-                    (left[i]->year == right[j]->year && (
-                        left[i]->month < right[j]->month ||
-                        (left[i]->month == right[j]->month && (
-                            left[i]->day < right[j]->day ||
-                            (left[i]->day == right[j]->day && (
-                                left[i]->hour < right[j]->hour ||
-                                (left[i]->hour == right[j]->hour && (
-                                    left[i]->minute < right[j]->minute ||
-                                    (left[i]->minute == right[j]->minute &&
-                                        left[i]->second < right[j]->second
-                                    )
-                                ))
+    }
+
+    free(aux);
+}
+
+void merge(LogRecord* logArray[], LogRecord* aux[], int left, int mid, int right, unsigned long *numComparacoes, unsigned long *numTrocas){
+    int i = left;
+    int j = mid;
+    int k = left;
+
+    while (i < mid && j < right) {
+        ++(*numComparacoes);
+        if ((logArray[i]->process_id < logArray[j]->process_id) ||
+            (logArray[i]->process_id == logArray[j]->process_id && (
+                logArray[i]->year < logArray[j]->year ||
+                (logArray[i]->year == logArray[j]->year && (
+                    logArray[i]->month < logArray[j]->month ||
+                    (logArray[i]->month == logArray[j]->month && (
+                        logArray[i]->day < logArray[j]->day ||
+                        (logArray[i]->day == logArray[j]->day && (
+                            logArray[i]->hour < logArray[j]->hour ||
+                            (logArray[i]->hour == logArray[j]->hour && (
+                                logArray[i]->minute < logArray[j]->minute ||
+                                (logArray[i]->minute == logArray[j]->minute &&
+                                    logArray[i]->second < logArray[j]->second
+                                )
                             ))
                         ))
                     ))
                 ))
             ))
-            {
-                logArray[k] = left[i]; 
-                i++;
-            } else {
-                logArray[k] = right[j];
-                j++;
-            }
-            k++;
-            ++(*numTrocas);
-        }
-        while (i < mid) { // se sobrou elementos na primeira metade
-            logArray[k] = left[i];
+        ) {
+            aux[k] = logArray[i];
             i++;
-            k++;
-            ++(*numTrocas);
-        }
-        while (j < n - mid) { // se sobrou elementos na segunda metade
-            logArray[k] = right[j];
+        } else {
+            aux[k] = logArray[j];
             j++;
-            k++;
-            ++(*numTrocas);
         }
+        k++;
+        ++(*numTrocas);
+    }
+
+    // copia o resto dos elementos da primeira metade, se houver
+    while (i < mid) {
+        aux[k] = logArray[i];
+        i++;
+        k++;
+        ++(*numTrocas);
+    }
+
+    // Copia os elementos da segunda metade, se houver
+    while (j < right) {
+        aux[k] = logArray[j];
+        j++;
+        k++;
+        ++(*numTrocas);
     }
 }
+

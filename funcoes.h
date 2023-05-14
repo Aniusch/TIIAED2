@@ -20,6 +20,7 @@ void insertionSort(LogRecord* logArray[], long int n, unsigned long *numComparac
 void selectionSort(LogRecord* logArray[], long int n, unsigned long *numComparacoes, unsigned long *numTrocas);
 void shellSort(LogRecord* logArray[], long int n, unsigned long *numComparacoes, unsigned long *numTrocas);
 void mergeSort(LogRecord* logArray[], long int n, unsigned long *numComparacoes, unsigned long *numTrocas);
+void merge(LogRecord* logArray[], LogRecord* aux[], int left, int mid, int right, unsigned long *numComparacoes, unsigned long *numTrocas);
 void heapify(LogRecord* arr[], long int n, long int i, unsigned long *numComparacoes, unsigned long *numTrocas);
 void heapSort(LogRecord* arr[], long int n, unsigned long *numComparacoes, unsigned long *numTrocas);
 void quickSort(LogRecord* logArray[], long int left, long int right, unsigned long *numComparacoes, unsigned long *numTrocas, int ascending);
