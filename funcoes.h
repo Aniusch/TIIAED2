@@ -13,6 +13,8 @@ typedef struct {
 }LogRecord;
 
 LogRecord* generateLogRecord();
+void printRegistros(LogRecord* logArray[], long int n);
+void userinput(int *escolha, long int *n, int *ordem);
 void bubbleSort(LogRecord* logArray[], long int n, unsigned long *numComparacoes, unsigned long *numTrocas);
 void insertionSort(LogRecord* logArray[], long int n, unsigned long *numComparacoes, unsigned long *numTrocas);
 void selectionSort(LogRecord* logArray[], long int n, unsigned long *numComparacoes, unsigned long *numTrocas);
