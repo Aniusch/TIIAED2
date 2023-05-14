@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void bubbleSort(LogRecord* logArray[], int n, unsigned long *numComparacoes, unsigned long *numTrocas) {
+void bubbleSort(LogRecord* logArray[], long int n, unsigned long *numComparacoes, unsigned long *numTrocas) {
     int i, j;
     LogRecord* aux;
     for(i = 0; i < n-1; i++){

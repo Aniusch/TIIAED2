@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void combSort(LogRecord* logArray[], int n, unsigned long *numComparacoes, unsigned long *numTrocas){
+void combSort(LogRecord* logArray[], long int n, unsigned long *numComparacoes, unsigned long *numTrocas){
     int gap = n;
     float shrink = 1.3;
     int sorted = 0;

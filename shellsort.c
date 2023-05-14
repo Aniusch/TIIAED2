@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void shellSort(LogRecord* logArray[], int n, unsigned long *numComparacoes, unsigned long *numTrocas){
+void shellSort(LogRecord* logArray[], long int n, unsigned long *numComparacoes, unsigned long *numTrocas){
     int i, j, h;
     LogRecord* temp;
     // Definindo a sequência de lacunas

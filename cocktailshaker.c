@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void cocktailShakerSort(LogRecord* logArray[], int n, unsigned long *numComparacoes, unsigned long *numTrocas){
+void cocktailShakerSort(LogRecord* logArray[], long int n, unsigned long *numComparacoes, unsigned long *numTrocas){
     int comeco = 0, fim = n - 1;
     int troca = 1;
     LogRecord* temp;

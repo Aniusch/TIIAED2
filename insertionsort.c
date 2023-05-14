@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void insertionSort(LogRecord* logArray[], int n, unsigned long *numComparacoes, unsigned long *numTrocas){
+void insertionSort(LogRecord* logArray[], long int n, unsigned long *numComparacoes, unsigned long *numTrocas){
     int i, j;
     LogRecord* key; // chave do Insertion Sort
     for(i = 1; i < n; i++){

@@ -16,3 +16,7 @@ O cenário em questão é a organização dos registros de log de um programa es
 - (8) Comb Sort;
 - (9) Cocktail Shaker Sort;
 - (10) Bingo Sort.
+
+## Compilação
+
+gcc -o ordenacao main.c bubblesort.c insertionsort.c selectionsort.c shellsort.c mergesort.c heapsort.c quicksort.c combsort.c cocktailshaker.c bingosort.c

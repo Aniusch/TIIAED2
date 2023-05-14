@@ -33,7 +33,7 @@ void printRegistros(LogRecord* logArray[], int n){
         i++;
    }
 }
-void userinput(int *escolha, int *n, int *ordem){
+void userinput(int *escolha, long int *n, int *ordem){
     printf("Escolha um algoritmo de ordenacao:\n");
     printf("1 - Bubble Sort\n");
     printf("2 - Insertion Sort\n");
@@ -56,7 +56,7 @@ void userinput(int *escolha, int *n, int *ordem){
 }
 int main(){
     int escolha; // escolha um algoritmo
-    int n; // numero de registros de log
+    long int n; // numero de registros de log
     int ordem; // 0 para ordem decrescente e 1 para ordem crescente
     clock_t start, end; // medir tempo de execucao
     double cpu_time; // tempo de execucao

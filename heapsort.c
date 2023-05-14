@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void heapify(LogRecord* arr[], int n, int i, unsigned long *numComparacoes, unsigned long *numTrocas){ 
+void heapify(LogRecord* arr[], long int n, long int i, unsigned long *numComparacoes, unsigned long *numTrocas){ 
     int largest = i; // inicializa o maior como raiz
     int l = 2 * i + 1; // elemento da esquerda
     int r = 2 * i + 2; // elemento da direita
@@ -27,7 +27,7 @@ void heapify(LogRecord* arr[], int n, int i, unsigned long *numComparacoes, unsi
         heapify(arr, n, largest, numComparacoes, numTrocas);
     }
 }
-void heapSort(LogRecord* arr[], int n, unsigned long *numComparacoes, unsigned long *numTrocas) {
+void heapSort(LogRecord* arr[], long int n, unsigned long *numComparacoes, unsigned long *numTrocas) {
     LogRecord* temp;
     // Construindo o heap
     for (int i = n / 2 - 1; i >= 0; i--) {

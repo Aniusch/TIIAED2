@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void selectionSort(LogRecord* logArray[], int n, unsigned long *numComparacoes, unsigned long *numTrocas){
+void selectionSort(LogRecord* logArray[], long int n, unsigned long *numComparacoes, unsigned long *numTrocas){
     int i, j, min_idx;
     LogRecord* temp;
     for(i = 0; i < n-1; i++){

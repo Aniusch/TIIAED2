@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void mergeSort(LogRecord* logArray[], int n, unsigned long *numComparacoes, unsigned long *numTrocas){
+void mergeSort(LogRecord* logArray[], long int n, unsigned long *numComparacoes, unsigned long *numTrocas){
     if (n > 1) {
         int mid = n / 2;
         LogRecord* left[mid];
