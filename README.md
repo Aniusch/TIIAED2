@@ -19,4 +19,4 @@ O cenário em questão é a organização dos registros de log de um programa es
 
 ## Compilação
 
-gcc -o ordenacao main.c bubblesort.c insertionsort.c selectionsort.c shellsort.c mergesort.c heapsort.c quicksort.c combsort.c cocktailshaker.c bingosort.c
+gcc -o ordenacao main.c bubblesort.c insertionsort.c selectionsort.c shellsort.c mergesort.c heapsort.c quicksort.c combsort.c cocktailshaker.c bingosort.c suporte.c
