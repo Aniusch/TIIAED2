@@ -8,7 +8,7 @@ LogRecord* generateLogRecord(){
     // Aloca um registros de log
     LogRecord *logRecordUnit = malloc(sizeof(LogRecord));
     if (logRecordUnit == NULL){
-        perror("Erro ao alocar memoria");
+        printf("Erro ao alocar memoria");
         exit(EXIT_FAILURE);
     }
     // Gera uma data aleatoria no intervalo de 2010 a 2022
@@ -23,7 +23,7 @@ LogRecord* generateLogRecord(){
     logRecordUnit->process_id = rand() % 100;
     return logRecordUnit;
 }
-void printRegistros(LogRecord* logArray[], int n){
+void printRegistros(LogRecord* logArray[], long int n){
     int i;
     // imprimindo registros de log ordenados
     printf("Registros de log ordenados:\n");
@@ -63,14 +63,18 @@ int main(){
     long int numComparacoes = 0; // numero de comparacoes
     long int numTrocas = 0; // numero de trocas
 
-    userinput(&escolha, &n, &ordem);
+    userinput(&escolha, &n, &ordem);    
 
-    LogRecord* logArray[n];
-    // gerando registros de log aleatorios
-    for(int i = 0; i < n; i++){
-        logArray[i] = generateLogRecord(); // gera um registro de log aleatorio
+    LogRecord** logArray = malloc(n * sizeof(LogRecord)); // alocando memoria para o vetor de registros de log
+    if (logArray == NULL){
+        printf("Erro ao alocar memoria");
+        exit(EXIT_FAILURE);
     }
-
+    // gerando registros de log
+    for(int i = 0; i < n; i++){
+        logArray[i] = generateLogRecord();
+    }
+    // ordenando registros de log
     if(ordem < 2){
         quickSort(logArray, 0, n-1, &numComparacoes, &numTrocas, ordem); // organiza o registro
         numComparacoes = 0;
