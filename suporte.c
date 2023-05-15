@@ -52,4 +52,8 @@ void userinput(int *escolha, long int *n, int *ordem){
     printf("1 - Crescente\n");
     printf("2 - Aleatoria\n");
     scanf("%d", ordem);
+    if(*ordem < 0 || *ordem > 2){
+        printf("Ordem invalida\n");
+        exit(EXIT_FAILURE);
+    }
 }
